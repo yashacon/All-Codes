@@ -1,0 +1,63 @@
+#include<bits/stdc++.h>
+#include<algorithm>
+#include<vector>
+
+using namespace std;
+int main()
+{
+	int t,n,m,k;
+	vector < pair <int,int> > vect;
+	vector <string> comb;
+	typedef vector<string>::iterator stringiterator;
+	stringiterator it;
+	int r,c;
+	cin>>t;
+	for(int i=0;i<t;i++)
+	{
+	    vect.clear();
+	    comb.clear();
+		cin>>n>>m>>k;
+		int total=0;
+		for(int j=0;j<k;j++)
+		{
+			cin>>r>>c;
+			vect.push_back(make_pair(r,c));
+			comb.push_back(to_string(r).append(to_string(c)));
+			
+		}
+		for(int j=0;j<k;j++)
+		{
+			
+			int count=0;
+			if(((vect[j].first)+1)!=n+1&&((vect[j].first)+1)!=0)
+			{
+				it=find(comb.begin(),comb.end(),to_string((vect[j].first)+1).append(to_string((vect[j].second))));
+				if(it!=comb.end())
+					count++;
+			}
+			if(((vect[j].first)-1)!=n+1&&((vect[j].first)-1)!=0)
+			{				
+				it=find(comb.begin(),comb.end(),to_string((vect[j].first)-1).append(to_string((vect[j].second))));
+				if(it!=comb.end())
+					count++;
+			}
+			if(((vect[j].second)+1)!=m+1&&((vect[j].second)+1)!=0)
+			{
+				it=find(comb.begin(),comb.end(),to_string((vect[j].first)).append(to_string((vect[j].second)+1)));
+				if(it!=comb.end())
+					count++;
+			}
+			if(((vect[j].second)-1)!=m+1&&((vect[j].second)-1)!=0)
+			{
+				it=find(comb.begin(),comb.end(),to_string((vect[j].first)).append(to_string((vect[j].second)-1)));
+				if(it!=comb.end())
+				        count++;
+			}
+			total=total+4-count;
+			
+		}
+		cout<<total<<endl;
+	}
+	
+	return 0;
+}

@@ -1,0 +1,79 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int t;
+    cin>>t;
+    while(t-->0)
+    {
+        int n,m,k,i;
+        string str,str1,str2;
+        cin>>n>>m>>k;
+        if(n<=1000&& m<=1000)
+        {
+            int cx[k],cy[k];
+            int sp[n+2][m+2];
+            for(int l=0;l<n+2;l++)
+                for(int j=0;j<m+2;j++)
+                    sp[l][j]=0;
+            int fence=0;
+            for( int j=0;j<k;j++)
+            {
+                cin>>cx[j]>>cy[j];
+                sp[cx[j]][cy[j]]=1;
+                
+            }
+            for(int l=0;l<k;l++)
+            {
+                
+                if(sp[cx[l]+1][cy[l]]!=1)
+                fence++;
+                if(sp[cx[l]-1][cy[l]]!=1)
+                fence++;
+                if(sp[cx[l]][cy[l]+1]!=1)
+                fence++;
+                if(sp[cx[l]][cy[l]-1]!=1)
+                fence++;
+                
+                
+            }
+            cout<<fence<<endl;
+        }
+        else{
+        set<string>arr;
+        int x1[k];
+        int y1[k];
+        for(int i=0;i<k;i++)
+        {
+            cin>>x1[i]>>y1[i];
+            str1=to_string(x1[i]);
+            str2=to_string(y1[i]);
+            str=str1+str2;
+            arr.insert(str);
+	    }   
+    	int fen=0;	
+    	set<string>::iterator itr;
+    	for(itr=arr.begin(),i=0;itr!=arr.end();itr++,i++)
+    	{ 
+                string a=to_string(x1[i])+to_string(y1[i]+1);
+                string b=to_string(x1[i])+to_string(y1[i]-1);
+                string c=to_string(x1[i]+1)+to_string(y1[i]);
+                string d=to_string(x1[i]-1)+to_string(y1[i]);                             
+                if(arr.find(a)==arr.end())
+                fen++;
+                
+                if(arr.find(b)==arr.end())
+                fen++;
+                
+                if(arr.find(c)==arr.end())
+                fen++;
+                
+                if(arr.find(d)==arr.end())
+                fen++;
+                              
+        }        
+        cout<<fen<<endl;   
+        }
+        
+    }
+}

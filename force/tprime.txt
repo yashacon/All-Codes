@@ -1,0 +1,32 @@
+#include<bits/stdc++.h>
+using namespace std;
+bool isPrime(int num){
+    bool flag=true;
+    for(long int i = 2; i <= num / 2; i++) {
+       if(num % i == 0) {
+          flag = false;
+          break;
+       }
+    }
+    return flag;
+}
+int main(){
+	long int n,j=0;
+	long int x,a[78498];
+	for(long int i=0;i<1000000;i++)
+	{
+		if(isPrime(i+1))
+		a[j++]=(i+1)*(i+1);
+		
+	}
+	cin>>n;
+	for(long int i=0;i<n;i++)
+	{
+		cin>>x;
+		if(binary_search(a,a+78498,x))
+		cout<<"YES"<<endl;
+		else
+		cout<<"NO"<<endl;
+	}
+}
+		

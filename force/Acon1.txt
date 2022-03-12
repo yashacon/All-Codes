@@ -1,0 +1,42 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+	std::ios::sync_with_stdio(false);
+	long long int i,n,k,m,l,left;
+	cin>>n>>m>>k>>l;
+	if(m<n)
+	{
+		left=n/m;
+		for(i=1;i<=left;i++)
+		{
+			if(m*i-k>l)
+			{
+				cout<<i;
+				break;
+			}
+		}
+		if(i==left+1)
+		cout<<-1;
+	}
+	else
+	cout<<-1;
+	return 0;
+	
+}
+	if(m<n)
+	{
+		left=n/m;
+		while(1){
+			res=binary_search(1,left,i)
+			if(m*1-k>l)
+			{
+				cout<<res;
+				return 0;
+			}
+			else 
+			{
+				left=(left+1)/2;
+			}
+		}
+	}
+		
